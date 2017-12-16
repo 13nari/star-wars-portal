@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
-
+import { StarshipService } from '../starship.service';
 import { Starship } from '../starship';
 
 @Component({
@@ -12,31 +10,31 @@ import { Starship } from '../starship';
 })
 export class StarshipsComponent implements OnInit {
 
-  heroes: Hero[];
+  starships: Starship[];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private starshipService: StarshipService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getStarships();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+  getStarships(): void {
+    this.starshipService.getStarships()
+    .subscribe(heroes => this.starships = heroes);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
+    this.starshipService.addStarship({ name } as Starship)
       .subscribe(hero => {
-        this.heroes.push(hero);
+        this.starships.push(hero);
       });
   }
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
+  delete(starship: Starship): void {
+    this.starships = this.starships.filter(h => h !== starship);
+    this.starshipService.deleteStarship(starship).subscribe();
   }
 
 }

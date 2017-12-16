@@ -17,6 +17,8 @@ import { HeroService }          from './hero.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
 import { StarshipsComponent } from './starships/starships.component';
+import { StarshipService }          from './starship.service';
+import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
 
 @NgModule({
   imports: [
@@ -39,9 +41,10 @@ import { StarshipsComponent } from './starships/starships.component';
     HeroDetailComponent,
     MessagesComponent,
     HeroSearchComponent,
-    StarshipsComponent
+    StarshipsComponent,
+    StarshipDetailComponent
   ],
-  providers: [ HeroService, MessageService ],
+  providers: [ HeroService, MessageService, StarshipService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
