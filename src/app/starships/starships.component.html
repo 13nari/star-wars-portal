@@ -1,0 +1,21 @@
+<h2>Starships</h2>
+
+<div>
+  <label>Starship name:
+    <input #heroName /> <!-- implementar campo de pesquisa -->
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''"><!-- modificar para botao de pesquisar -->
+    add
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero"
+    (click)="delete(hero)">x</button>
+  </li>
+</ul>
