@@ -1,3 +1,11 @@
-<p>
-  starship-detail works!
-</p>
+<div *ngIf="starship">
+  <h2>{{ starship.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{starship.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="starship.name" placeholder="name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

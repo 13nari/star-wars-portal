@@ -2,7 +2,7 @@
 
 <ul class="starships">
   <li *ngFor="let starship of starships">
-    <a routerLink="/detail/{{starship.id}}">
+    <a routerLink="/starshipdetail/{{starship.id}}">
       <span class="badge">{{starship.id}}</span> {{starship.name}}
     </a>
   </li>

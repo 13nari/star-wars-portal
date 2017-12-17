@@ -10,9 +10,9 @@ import { StarshipDetailComponent }  from './starship-detail/starship-detail.comp
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
+  { path: 'characterdetail/:id', component: HeroDetailComponent },
   { path: 'starships', component: StarshipsComponent },
-  { path: 'detail/:id', component: StarshipDetailComponent },
+  { path: 'starshipdetail/:id', component: StarshipDetailComponent },
   { path: 'heroes', component: HeroesComponent }
 ];
 

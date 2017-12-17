@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Starship }         from '../starship';
+import { StarshipService }  from '../starship.service';
 
 @Component({
   selector: 'app-starship-detail',
@@ -7,9 +13,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarshipDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() starship: Starship;
+  constructor(
+    private route: ActivatedRoute,
+    private starshipService: StarshipService,
+    private location: Location
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getStarship();
+  }
+
+  getStarship(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.starshipService.getStarship(id)
+      .subscribe(starship => this.starship = starship);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+ save(): void {
+    this.starshipService.updateStarship(this.starship)
+      .subscribe(() => this.goBack());
   }
 
 }

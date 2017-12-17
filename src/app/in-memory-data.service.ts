@@ -15,16 +15,16 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 20, name: 'Tornado' }
     ];
         const starships = [
-      { id: 11, name: 'Nave 1' },
-      { id: 12, name: 'Nave 2' },
-      { id: 13, name: 'Nave 3' },
-      { id: 14, name: 'Nave 4' },
-      { id: 15, name: 'Nave 5' },
-      { id: 16, name: 'Nave 6' },
-      { id: 17, name: 'Nave 7' },
-      { id: 18, name: 'Nave 8' },
-      { id: 19, name: 'Nave 9' },
-      { id: 20, name: 'Nave 10' }
+      { id: 21, name: 'Nave 1' },
+      { id: 22, name: 'Nave 2' },
+      { id: 23, name: 'Nave 3' },
+      { id: 24, name: 'Nave 4' },
+      { id: 25, name: 'Nave 5' },
+      { id: 26, name: 'Nave 6' },
+      { id: 27, name: 'Nave 7' },
+      { id: 28, name: 'Nave 8' },
+      { id: 29, name: 'Nave 9' },
+      { id: 30, name: 'Nave 10' }
     ];
     return {heroes,starships};
   }
