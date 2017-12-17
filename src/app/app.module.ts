@@ -10,10 +10,10 @@ import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard/dashboard.component';
-import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-import { HeroesComponent }      from './heroes/heroes.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
-import { HeroService }          from './hero.service';
+import { CharacterDetailComponent }  from './character-detail/character-detail.component';
+import { CharactersComponent }      from './characters/characters.component';
+import { CharacterSearchComponent }  from './character-search/character-search.component';
+import { CharacterService }          from './character.service';
 import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
 import { StarshipsComponent } from './starships/starships.component';
@@ -37,14 +37,14 @@ import { StarshipDetailComponent } from './starship-detail/starship-detail.compo
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
+    CharactersComponent,
+    CharacterDetailComponent,
     MessagesComponent,
-    HeroSearchComponent,
+    CharacterSearchComponent,
     StarshipsComponent,
     StarshipDetailComponent
   ],
-  providers: [ HeroService, MessageService, StarshipService ],
+  providers: [ CharacterService, MessageService, StarshipService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ export class StarshipService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET heroes from the server */
+  /** GET characters from the server */
   getStarships (): Observable<Starship[]> {
     return this.http.get<Starship[]>(this.starshipsUrl)
       .pipe(
@@ -31,7 +31,7 @@ export class StarshipService {
       );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
+  /** GET character by id. Return `undefined` when id not found */
   getStarshipNo404<Data>(id: number): Observable<Starship> {
     const url = `${this.starshipsUrl}/?id=${id}`;
     return this.http.get<Starship[]>(url)
@@ -45,7 +45,7 @@ export class StarshipService {
       );
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET character by id. Will 404 if id not found */
   getStarship(id: number): Observable<Starship> {
     const url = `${this.starshipsUrl}/${id}`;
     return this.http.get<Starship>(url).pipe(
@@ -54,7 +54,7 @@ export class StarshipService {
     );
   }
 
-  /* GET heroes whose name contains search term */
+  /* GET characters whose name contains search term */
   searchStarships(term: string): Observable<Starship[]> {
     if (!term.trim()) {
       // if not search term, return empty starship array.
@@ -68,7 +68,7 @@ export class StarshipService {
 
   //////// Save methods ////////// ############# APAGAR ###########
 
-  /** POST: add a new hero to the server */
+  /** POST: add a new character to the server */
   addStarship (starship: Starship): Observable<Starship> {
     return this.http.post<Starship>(this.starshipsUrl, starship, httpOptions).pipe(
       tap((starship: Starship) => this.log(`added starship w/ id=${starship.id}`)),
@@ -87,7 +87,7 @@ export class StarshipService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the character on the server */
   updateStarship (starship: Starship): Observable<any> {
     return this.http.put(this.starshipsUrl, starship, httpOptions).pipe(
       tap(_ => this.log(`updated starship id=${starship.id}`)),
@@ -115,7 +115,7 @@ export class StarshipService {
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a CharacterService message with the MessageService */
   private log(message: string) {
     this.messageService.add('StarshipService: ' + message);
   }
