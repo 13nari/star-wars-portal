@@ -22,7 +22,7 @@ export class CharactersComponent implements OnInit {
     .subscribe(characters => this.characters = characters);
   }
 
-  add(name: string): void {
+/*  add(name: string): void {
     name = name.trim();
     if (!name) { return; }
     this.characterService.addCharacter({ name } as Character)
@@ -35,5 +35,5 @@ export class CharactersComponent implements OnInit {
     this.characters = this.characters.filter(h => h !== character);
     this.characterService.deleteCharacter(character).subscribe();
   }
-
+*/
 }

@@ -1,57 +1,60 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {catchError, map, tap} from 'rxjs/operators';
 
-import { Character } from './character';
-import { MessageService } from './message.service';
+import {Character} from './character';
+import {MessageService} from './message.service';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable()
 export class CharacterService {
 
-  private charactersUrl = 'api/characters';  // URL to web api
+  private charactersUrl = 'https://swapi.co/api/people/?format=json';  // URL to web api
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {}
+
+
+
 
   /** GET characters from the server */
-  getCharacters (): Observable<Character[]> {
+  getCharacters(): Observable<Character[]> {
     return this.http.get<Character[]>(this.charactersUrl)
       .pipe(
-        tap(characters => this.log(`fetched characters`)),
-        catchError(this.handleError('getCharacters', []))
+      tap(characters => this.log(`fetched characters`)),
+      catchError(this.handleError('getCharacters', []))
       );
   }
 
   /** GET character by id. Return `undefined` when id not found */
-  getCharacterNo404<Data>(id: number): Observable<Character> {
-    const url = `${this.charactersUrl}/?id=${id}`;
-    return this.http.get<Character[]>(url)
-      .pipe(
-        map(characters => characters[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} character id=${id}`);
-        }),
-        catchError(this.handleError<Character>(`getCharacter id=${id}`))
-      );
-  }
+  //  getCharacterNo404<Data>(id: number): Observable<Character> {
+  //    const url = `${this.charactersUrl}/?id=${id}`;
+  //    return this.http.get<Character[]>(url)
+  //      .pipe(
+  //        map(characters => characters[0]), // returns a {0|1} element array
+  //        tap(h => {
+  //          const outcome = h ? `fetched` : `did not find`;
+  //          this.log(`${outcome} character id=${id}`);
+  //        }),
+  //        catchError(this.handleError<Character>(`getCharacter id=${id}`))
+  //      );
+  //  }
 
   /** GET character by id. Will 404 if id not found */
-  getCharacter(id: number): Observable<Character> {
-    const url = `${this.charactersUrl}/${id}`;
-    return this.http.get<Character>(url).pipe(
-      tap(_ => this.log(`fetched character id=${id}`)),
-      catchError(this.handleError<Character>(`getCharacter id=${id}`))
-    );
-  }
+  //  getCharacter(id: number): Observable<Character> {
+  //    const url = `${this.charactersUrl}/${id}`;
+  //    return this.http.get<Character>(url).pipe(
+  //      tap(_ => this.log(`fetched character id=${id}`)),
+  //      catchError(this.handleError<Character>(`getCharacter id=${id}`))
+  //    );
+  //  }
 
   /* GET characters whose name contains search term */
   searchCharacters(term: string): Observable<Character[]> {
@@ -68,39 +71,39 @@ export class CharacterService {
   //////// Save methods //////////
 
   /** POST: add a new character to the server */
-  addCharacter (character: Character): Observable<Character> {
-    return this.http.post<Character>(this.charactersUrl, character, httpOptions).pipe(
-      tap((character: Character) => this.log(`added character w/ id=${character.id}`)),
-      catchError(this.handleError<Character>('addCharacter'))
-    );
-  }
+  //  addCharacter (character: Character): Observable<Character> {
+  //    return this.http.post<Character>(this.charactersUrl, character, httpOptions).pipe(
+  //      tap((character: Character) => this.log(`added character w/ id=${character.id}`)),
+  //      catchError(this.handleError<Character>('addCharacter'))
+  //    );
+  //  }
 
   /** DELETE: delete the character from the server */
-  deleteCharacter (character: Character | number): Observable<Character> {
-    const id = typeof character === 'number' ? character : character.id;
-    const url = `${this.charactersUrl}/${id}`;
+  //  deleteCharacter (character: Character | number): Observable<Character> {
+  //    const id = typeof character === 'number' ? character : character.id;
+  //    const url = `${this.charactersUrl}/${id}`;
+  //
+  //    return this.http.delete<Character>(url, httpOptions).pipe(
+  //      tap(_ => this.log(`deleted character id=${id}`)),
+  //      catchError(this.handleError<Character>('deleteCharacter'))
+  //    );
+  //  }
 
-    return this.http.delete<Character>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted character id=${id}`)),
-      catchError(this.handleError<Character>('deleteCharacter'))
-    );
-  }
-
-  /** PUT: update the character on the server */
+  /** PUT: update the character on the server
   updateCharacter (character: Character): Observable<any> {
     return this.http.put(this.charactersUrl, character, httpOptions).pipe(
       tap(_ => this.log(`updated character id=${character.id}`)),
       catchError(this.handleError<any>('updateCharacter'))
     );
   }
-
+*/
   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
