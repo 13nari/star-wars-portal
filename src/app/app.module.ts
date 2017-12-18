@@ -24,6 +24,7 @@ import { SpecieService }          from './specie.service';
 import { PilotsComponent } from './pilots/pilots.component';
 import { PilotService }          from './pilot.service';
 import { PilotDetailComponent } from './pilot-detail/pilot-detail.component';
+import { StarshipSearchComponent } from './starship-search/starship-search.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { PilotDetailComponent } from './pilot-detail/pilot-detail.component';
     StarshipDetailComponent,
     SpeciesComponent,
     PilotsComponent,
-    PilotDetailComponent
+    PilotDetailComponent,
+    StarshipSearchComponent
   ],
   providers: [ CharacterService, MessageService, StarshipService, SpecieService, PilotService ],
   bootstrap: [ AppComponent ]
