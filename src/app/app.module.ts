@@ -19,6 +19,8 @@ import { MessagesComponent }    from './messages/messages.component';
 import { StarshipsComponent } from './starships/starships.component';
 import { StarshipService }          from './starship.service';
 import { StarshipDetailComponent } from './starship-detail/starship-detail.component';
+import { SpeciesComponent } from './species/species.component';
+import { SpecieService }          from './specie.service';
 
 @NgModule({
   imports: [
@@ -42,9 +44,10 @@ import { StarshipDetailComponent } from './starship-detail/starship-detail.compo
     MessagesComponent,
     CharacterSearchComponent,
     StarshipsComponent,
-    StarshipDetailComponent
+    StarshipDetailComponent,
+    SpeciesComponent
   ],
-  providers: [ CharacterService, MessageService, StarshipService ],
+  providers: [ CharacterService, MessageService, StarshipService, SpecieService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
