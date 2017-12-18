@@ -21,11 +21,17 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 24, name: 'Death Star'}
     ];
     const species = [
-      {id: 21, name: 'Human'},
-      {id: 22, name: 'Droid'},
-      {id: 23, name: 'Wookiee'},
-      {id: 24, name: 'Rodian'}
+      {id: 25, name: 'Human'},
+      {id: 26, name: 'Droid'},
+      {id: 27, name: 'Wookiee'},
+      {id: 28, name: 'Rodian'}
     ];
-    return {characters, starships, species};
+    const pilots = [
+      {id: 29, name: 'Obi-Wan Kenobi'},
+      {id: 30, name: 'Anakin Skywalker'},
+      {id: 31, name: 'Chewbacca'},
+      {id: 32, name: 'Wedge Antilles'}
+    ];
+    return {characters, starships, species, pilots};
   }
 }

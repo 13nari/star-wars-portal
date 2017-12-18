@@ -90,7 +90,7 @@ export class SpecieService {
   updateSpecie (specie: Specie): Observable<any> {
     return this.http.put(this.speciesUrl, specie, httpOptions).pipe(
       tap(_ => this.log(`updated specie id=${specie.id}`)),
-      catchError(this.handleError<any>('updateSpecie'))
+      catchError(this.handleError<any>('updatePilot'))
     );
   }
 

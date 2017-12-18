@@ -15,20 +15,20 @@ species: Specie[];
   constructor(private specieService: SpecieService) { }
 
   ngOnInit() {
-    this.getCharacters();
+    this.getSpecies();
   }
 
-  getCharacters(): void {
+  getSpecies(): void {
     this.specieService.getSpecies()
-    .subscribe(characters => this.species = characters);
+    .subscribe(species => this.species = species);
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
     this.specieService.addSpecie({ name } as Specie)
-      .subscribe(character => {
-        this.species.push(character);
+      .subscribe(specie => {
+        this.species.push(specie);
       });
   }
 

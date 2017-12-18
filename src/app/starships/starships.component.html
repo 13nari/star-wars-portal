@@ -1,9 +1,21 @@
-<h2>Starships</h2>
+<h2>My Starships</h2>
 
-<ul class="starships">
+<div>
+  <label>Starship name:
+    <input #starshipName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(starshipName.value); starshipName.value=''">
+    add
+  </button>
+</div>
+
+<ul class="starship">
   <li *ngFor="let starship of starships">
-    <a routerLink="/starshipdetail/{{starship.id}}">
+    <a routerLink="/pilots/">
       <span class="badge">{{starship.id}}</span> {{starship.name}}
     </a>
+    <button class="delete" title="delete starship"
+    (click)="delete(starship)">x</button>
   </li>
 </ul>
