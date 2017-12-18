@@ -1,7 +1,9 @@
 <h2>My Species</h2>
 <ul class="species">
   <li *ngFor="let specie of species">
+      <a>
       <span class="badge">{{specie.id}}</span> {{specie.name}}
+      </a>
     <button class="delete" title="delete specie"
     (click)="delete(specie)">x</button>
   </li>
