@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { Pilot }         from '../pilot';
+import { PilotService }  from '../pilot.service';
 
 @Component({
   selector: 'app-pilot-detail',
@@ -6,10 +11,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pilot-detail.component.css']
 })
 export class PilotDetailComponent implements OnInit {
+@Input() pilot: Pilot;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private pilotService: PilotService,
+    private location: Location
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getPilot();
   }
 
+  getPilot(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.pilotService.getPilot(id)
+      .subscribe(pilot => this.pilot = pilot);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+ save(): void {
+    this.pilotService.updatePilot(this.pilot)
+      .subscribe(() => this.goBack());
+  }
 }

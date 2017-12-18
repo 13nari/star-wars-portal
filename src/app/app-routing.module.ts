@@ -8,6 +8,7 @@ import { StarshipsComponent }   from './starships/starships.component';
 import { StarshipDetailComponent }  from './starship-detail/starship-detail.component';
 import { SpeciesComponent }   from './species/species.component';
 import { PilotsComponent }   from './pilots/pilots.component';
+import { PilotDetailComponent }  from './pilot-detail/pilot-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'starshipdetail/:id', component: StarshipDetailComponent },
   { path: 'characters', component: CharactersComponent },
   { path: 'species', component: SpeciesComponent },
-  { path: 'pilots', component: PilotsComponent }
+  { path: 'pilots', component: PilotsComponent },
+  { path: 'pilotdetail/:id', component: PilotDetailComponent }
 ];
 
 @NgModule({
